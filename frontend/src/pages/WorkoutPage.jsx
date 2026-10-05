@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const WorkoutPage = () => {
   const navigate = useNavigate();
@@ -58,23 +58,27 @@ const WorkoutPage = () => {
 
 
   return (
-    <div className="workout-preview">
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
-        <>
-          <h2>Workout Details</h2>
-          <h2>Title: {workout.title}</h2>
-          <p>Difficulty: {workout.difficulty}</p>
-          <p>Description: {workout.description}</p>
-          <p>Price: ${workout.price.toFixed(2)}</p>
-          <button onClick={() => handleGoHome()}>Back</button>
-          <button onClick={() => onDeleteClick(workout._id)}>Delete</button>
-          <button onClick={() => navigate(`/edit/${workout._id}`)}>Edit</button>
-        </>
-      )}
+    <div>
+      <div className="header">
+      <h1>Workout Details</h1>
+      </div>
+      <div className="workout-preview">
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
+          <>
+            <h2>Title: {workout.title}</h2>
+            <p>Difficulty: {workout.difficulty}</p>
+            <p>Description: {workout.description}</p>
+            <p>Price: ${workout.price.toFixed(2)}</p>
+            <button className="back" onClick={() => handleGoHome()}>Back</button>
+            <button className="delete" onClick={() => onDeleteClick(workout._id)}>Delete</button>
+            <button className="edit" onClick={() => navigate(`/edit-workout/${workout._id}`)}>Edit</button>
+          </>
+        )}
+      </div>
     </div>
   );
 };
