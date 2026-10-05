@@ -1,6 +1,7 @@
 import WorkoutListing from "./WorkoutListing";
 
 const WorkoutListings = ({ workouts }) => {
+const WorkoutListings = ({ workouts }) => {
   return (
     <div className="workout-list">
       {workouts.map((workout) => (
@@ -11,3 +12,4 @@ const WorkoutListings = ({ workouts }) => {
 };
 
 export default WorkoutListings;
+
