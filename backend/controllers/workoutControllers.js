@@ -3,12 +3,23 @@ const mongoose = require('mongoose');
 
 // GET /api/workouts
 const getAllWorkouts = async (req, res) => {
-  res.send("getAllWorkouts");
+  try {
+    const workouts = await Workout.find({}).sort({ createdAt: -1 });
+    res.status(200).json(workouts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 // POST /api/workouts
 const createWorkout = async (req, res) => {
-  res.send("createWorkout");
+  const { title, difficulty, description, price } = req.body;
+  try {
+    const workout = await Workout.create({ title, difficulty, description, price });
+    res.status(201).json(workout);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // GET /api/workouts/:workoutId
