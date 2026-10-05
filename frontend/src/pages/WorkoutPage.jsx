@@ -10,10 +10,7 @@ const WorkoutPage = () => {
   const deleteWorkout = async (workoutId) => {
     try {
       const res = await fetch(`/api/workouts/${workoutId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        method: "DELETE"
       });
       if (!res.ok) {
         throw new Error("Failed to delete workout");
