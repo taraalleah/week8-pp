@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {useNavigate, useParams} from "react-router-dom";
 
 const WorkoutPage = () => {
   const navigate = useNavigate();
@@ -6,6 +7,7 @@ const WorkoutPage = () => {
   const [workout, setWorkout] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
 
   const deleteWorkout = async (workoutId) => {
     try {
@@ -64,17 +66,13 @@ const WorkoutPage = () => {
       ) : (
         <>
           <h2>Workout Details</h2>
-          <p>{workout.title}</p>
+          <h2>Title: {workout.title}</h2>
           <p>Difficulty: {workout.difficulty}</p>
           <p>Description: {workout.description}</p>
           <p>Price: ${workout.price.toFixed(2)}</p>
           <button onClick={() => handleGoHome()}>Back</button>
-          {isAuthenticated && (
-            <>
-              <button onClick={() => onDeleteClick(workout._id)}>Delete</button>
-              <button onClick={() => navigate(`/edit/${workout._id}`)}>Edit</button>
-            </>
-          )}
+          <button onClick={() => onDeleteClick(workout._id)}>Delete</button>
+          <button onClick={() => navigate(`/edit/${workout._id}`)}>Edit</button>
         </>
       )}
     </div>
