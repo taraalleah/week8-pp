@@ -1,11 +1,14 @@
 import WorkoutListing from "./WorkoutListing";
 
-const WorkoutListings = () => {
+const WorkoutListings = ({ workouts }) => {
   return (
     <div className="workout-list">
-      <WorkoutListing />
+      {workouts.map((workout) => (
+        <WorkoutListing key={workout.id} workout={workout} />
+      ))}
     </div>
   );
 };
 
 export default WorkoutListings;
+
